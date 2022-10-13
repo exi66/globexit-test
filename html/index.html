@@ -96,13 +96,11 @@
 
             const renderUsersCards = function(json) {
 
-                json.forEach(function (value, i) {
-                    json[i].id = i;
-                });
-
                 $('#users-wrapper').empty();
                 $('#modals-wrapper').empty();
-                for (let user of json) {
+
+                json.forEach(function (user, i) {
+                    json[i].id = i;
                     $('#users-wrapper').append(
                         `<div class='col-4 my-3 user-card' data-bs-target='#user${user.id}'>
                             <div class="card shadow border-0 pb-5">
@@ -152,7 +150,7 @@
                             </div>
                         </div>`
                     )
-                }
+                });
 
                 $('.user-card').click(function() {
                     let modalTarget = $(this).attr('data-bs-target');
